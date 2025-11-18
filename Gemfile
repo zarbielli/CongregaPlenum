@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
+
+# Specify your gem's dependencies in congrega_plenum.gemspec
+gemspec
+
+gem 'logger', '~> 1.7'
+gem 'rake', '~> 13.0'
+gem 'rspec', '~> 3.0'
+gem 'rubocop', '~> 1.21'
+
+group :test do
+  gem 'simplecov', '~> 0.22', require: false
+  gem 'vcr', '~> 6.2'
+  gem 'webmock', '~> 3.23'
+end
+
+group :development do
+  gem 'pry', '~> 0.14.0'
+  gem 'steep', '~> 1.10'
+end

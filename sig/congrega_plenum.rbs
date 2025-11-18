@@ -1,0 +1,162 @@
+module CongregaPlenum
+  VERSION: String
+  type params_hash = ::Hash[::Symbol, untyped]
+  type payload_hash = ::Hash[String, untyped]
+  type payload_list = ::Array[payload_hash]
+
+  class Error < ::StandardError
+  end
+
+  class ConnectionError < Error
+  end
+
+  class APIError < Error
+  end
+
+  class RateLimitError < Error
+  end
+
+  @configuration: Configuration
+
+  def self.configuration: () -> Configuration
+  def self.configuration=: (Configuration) -> Configuration
+  def self.configure: () { (Configuration) -> void } -> void
+
+  class Configuration
+    attr_accessor base_url: String
+    attr_accessor timeout: Integer
+    attr_accessor retries: Integer
+    attr_accessor retry_delay: Float
+    attr_accessor rate_limit_delay: Float
+    attr_accessor logger: Logger
+
+    def initialize: () -> void
+  end
+
+  class HttpAdapter
+    attr_reader configuration: Configuration
+
+    def initialize: (?configuration: Configuration) -> void
+    def get: (String) -> ::Net::HTTPResponse
+    def build_http_client: (::URI::Generic) -> ::Net::HTTP
+    def build_http_request: (::URI::Generic) -> ::Net::HTTP::Get
+    def logger: () -> Logger
+  end
+
+  class RetryPolicy
+    attr_reader configuration: Configuration
+
+    def initialize: (?configuration: Configuration) -> void
+    def with_retries: [T] (String) { () -> T } -> T
+    def retry_request: (Integer, String, Error) -> void
+    def handle_retry_failure: (String, Error) -> bot
+    def calculate_backoff_delay: (Integer) -> Float
+    def max_retries: () -> Integer
+    def logger: () -> Logger
+  end
+
+  class ResponseHandler
+    def handle: (::Net::HTTPResponse, String) -> untyped
+    def parse_json_response: (::Net::HTTPResponse, String) -> untyped
+  end
+
+  class Client
+    include ::Singleton
+
+    def self.instance: () -> Client
+    attr_reader http_adapter: HttpAdapter
+    attr_reader retry_policy: RetryPolicy
+    attr_reader response_handler: ResponseHandler
+
+    def initialize: () -> void
+    def get: (String, ?params_hash) -> payload_hash
+    def get_paginated: (String, ?params_hash) -> payload_list
+    def each_response_page: (String, params_hash) { (payload_list) -> void } -> void
+    def request_page: (String, params_hash, Integer) -> payload_hash
+    def next_page?: (payload_hash) -> bool
+    def apply_rate_limit_delay: () -> void
+    def execute_request: (String) -> payload_hash
+    def build_url: (String, ?params_hash) -> String
+    def configuration: () -> Configuration
+  end
+
+  class CongressmenService
+    ITEMS_PER_PAGE: Integer
+    PROGRESS_INTERVAL: Integer
+    SERVICE_TAG: String
+
+    def self.client: () -> CongregaPlenum::Client
+    def self.api_get: (String, ?params_hash) -> payload_hash
+    def self.api_get_paginated: (String, ?params_hash) -> payload_list
+    def self.fetch_all: () -> payload_list
+    def self.fetch_all_by_legislature: (Integer) -> payload_list
+    def self.fetch_by_id: (Integer) -> payload_hash?
+    def self.fetch_list: (?page: Integer, ?items_per_page: Integer, ?legislature_id: Integer?) -> payload_list
+    def self.fetch_deputies_collection: (context: String, params: params_hash) -> payload_list
+    def self.build_detailed_deputies: (payload_list, String) -> payload_list
+    def self.log_progress: (Integer, Integer, String) -> void
+    def self.logger: () -> Logger
+    def self.log_info: (String) -> void
+    def self.log_error: (String) -> void
+    def self.log_debug: (String) -> void
+  end
+
+  class PartiesService
+    ITEMS_PER_PAGE: Integer
+    PROGRESS_INTERVAL: Integer
+    SERVICE_TAG: String
+
+    def self.client: () -> CongregaPlenum::Client
+    def self.api_get: (String, ?params_hash) -> payload_hash
+    def self.api_get_paginated: (String, ?params_hash) -> payload_list
+    def self.fetch_all: () -> payload_list
+    def self.fetch_by_id: (Integer) -> payload_hash?
+    def self.fetch_list: (?page: Integer, ?items_per_page: Integer) -> payload_list
+    def self.build_detailed_parties: (payload_list) -> payload_list
+    def self.log_progress: (Integer, Integer) -> void
+    def self.logger: () -> Logger
+    def self.log_info: (String) -> void
+    def self.log_error: (String) -> void
+    def self.log_debug: (String) -> void
+  end
+
+  class LegislaturesService
+    PAGE_SIZE: Integer
+    DEPUTIES_PAGE_SIZE: Integer
+    SERVICE_TAG: String
+
+    def self.client: () -> CongregaPlenum::Client
+    def self.api_get: (String, ?params_hash) -> payload_hash
+    def self.api_get_paginated: (String, ?params_hash) -> payload_list
+    def self.fetch_all: () -> payload_list
+    def self.fetch_by_id: (Integer) -> payload_hash?
+    def self.fetch_mesa: (Integer) -> payload_list
+    def self.fetch_deputies: (Integer) -> payload_list
+    def self.logger: () -> Logger
+    def self.log_info: (String) -> void
+    def self.log_error: (String) -> void
+    def self.log_debug: (String) -> void
+  end
+
+  # Minimal stubs for Net::HTTP types used internally
+  module ::Net
+    class HTTPResponse
+      def code: () -> String
+      def message: () -> String
+      def body: () -> String
+    end
+
+    class HTTP
+      def self.new: (String?, Integer?) -> HTTP
+      def use_ssl=: (bool) -> bool
+      attr_accessor read_timeout: Numeric
+      attr_accessor open_timeout: Numeric
+      def request: (::Net::HTTP::Get) -> HTTPResponse
+    end
+
+    class HTTP::Get
+      def self.new: (::URI::Generic) -> HTTP::Get
+      def []=: (String, String) -> String
+    end
+  end
+end

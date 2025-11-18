@@ -1,0 +1,15 @@
+inherit_mode:
+  merge:
+    - Exclude
+
+AllCops:
+  TargetRubyVersion: 3.4
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'coverage/**/*'
+    - 'doc/**/*'
+    - 'tmp/**/*'
+
+Layout/LineLength:
+  Max: 110
