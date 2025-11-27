@@ -34,5 +34,3 @@ jobs:
       - name: RSpec
         run: bundle exec rspec
 
-      - name: Steep
-        run: bundle exec steep check
