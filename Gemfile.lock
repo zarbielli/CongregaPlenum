@@ -31,9 +31,11 @@ GEM
       bigdecimal
       rexml
     csv (3.3.5)
+    date (3.5.0)
     diff-lcs (1.6.2)
     docile (1.4.1)
     drb (2.2.3)
+    erb (6.0.0)
     ffi (1.17.2)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
@@ -67,6 +69,9 @@ GEM
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    psych (5.2.6)
+      date
+      stringio
     public_suffix (6.0.2)
     racc (1.8.1)
     rainbow (3.1.1)
@@ -76,6 +81,10 @@ GEM
       ffi (~> 1.0)
     rbs (3.9.5)
       logger
+    rdoc (6.16.0)
+      erb
+      psych (>= 4.0.0)
+      tsort
     regexp_parser (2.11.3)
     rexml (3.4.4)
     rspec (3.13.2)
@@ -130,9 +139,11 @@ GEM
       strscan (>= 1.0.0)
       terminal-table (>= 2, < 5)
       uri (>= 0.12.0)
+    stringio (3.1.8)
     strscan (3.1.5)
     terminal-table (4.0.0)
       unicode-display_width (>= 1.1.1, < 4)
+    tsort (0.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.2.0)
@@ -145,6 +156,7 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
+    yard (0.9.37)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -164,12 +176,14 @@ DEPENDENCIES
   logger (~> 1.7)
   pry (~> 0.15.2)
   rake (~> 13.0)
+  rdoc (~> 6.16)
   rspec (~> 3.0)
   rubocop (~> 1.21)
   simplecov (~> 0.22)
   steep (~> 1.10)
   vcr (~> 6.2)
   webmock (~> 3.23)
+  yard (~> 0.9.37)
 
 BUNDLED WITH
    2.7.2

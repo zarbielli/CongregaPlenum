@@ -9,9 +9,13 @@ require 'logger'
 # CongregaPlenum centralizes access to the Brazilian Chamber of Deputies public API.
 # It exposes a global configuration and service objects for each resource.
 module CongregaPlenum
+  # Base error class for all domain-specific exceptions in the gem.
   class Error < StandardError; end
+  # Raised when connectivity fails before receiving a valid HTTP response.
   class ConnectionError < Error; end
+  # Raised when the API responds with an unexpected status code or payload.
   class APIError < Error; end
+  # Raised when the API signals that the rate limit has been exceeded.
   class RateLimitError < Error; end
 
   class << self

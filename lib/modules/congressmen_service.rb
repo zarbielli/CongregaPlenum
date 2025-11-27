@@ -4,11 +4,17 @@ module CongregaPlenum
   # Service responsible for interacting with congressmen endpoints, wrapping both
   # list and detail requests into high level helpers.
   class CongressmenService
+    # Default page size for list endpoints.
     ITEMS_PER_PAGE = 100
+    # Interval used to emit progress logs while iterating.
     PROGRESS_INTERVAL = 50
+    # Tag prefix for structured logging.
     SERVICE_TAG = 'CongregaPlenum::CongressmenService'
 
     class << self
+      # Shared client instance configured via {CongregaPlenum.configure}.
+      #
+      # @return [CongregaPlenum::Client]
       def client
         @client ||= CongregaPlenum::Client.instance
       end
@@ -22,7 +28,7 @@ module CongregaPlenum
         { 'dados' => [] }
       end
 
-      # Same as {#api_get}, but for bulk pagination calls.
+      # Same as {.api_get}, but for bulk pagination calls.
       def api_get_paginated(endpoint, params = {})
         client.get_paginated(endpoint, params)
       rescue StandardError => e

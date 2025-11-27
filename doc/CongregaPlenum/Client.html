@@ -1,307 +1,697 @@
 <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: CongregaPlenum::Client
+  
+    &mdash; Documentation by YARD 0.9.37
+  
+</title>
 
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-<title>class CongregaPlenum::Client - CongregaPlenum Documentation</title>
-
-  <meta name="keywords" content="ruby,class,CongregaPlenum::Client">
-
-    <meta name="description" content="class CongregaPlenum::Client: HTTP client responsible for talking to the Câmara API endpoints and dealing with retries, pagination and response parsing. All methods are thread-safe">
-
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
 <script type="text/javascript">
-  var rdoc_rel_prefix = "../";
-  var index_rel_prefix = "../";
+  pathId = "CongregaPlenum::Client";
+  relpath = '../';
 </script>
 
-<script src="../js/navigation.js" defer></script>
-<script src="../js/search.js" defer></script>
-<script src="../js/search_index.js" defer></script>
-<script src="../js/searcher.js" defer></script>
-<script src="../js/darkfish.js" defer></script>
 
-<link href="../css/fonts.css" rel="stylesheet">
-<link href="../css/rdoc.css" rel="stylesheet">
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
 
 
-<body id="top" role="document" class="class">
-<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
-  <span aria-hidden="true">&#9776;</span>
-</div>
-
-
-<nav id="navigation" role="navigation">
-  <div id="project-navigation">
-    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
-  <h2>
-    <a href="../index.html" rel="home">Home</a>
-  </h2>
-
-  <div id="table-of-contents-navigation">
-    <a href="../table_of_contents.html#pages">Pages</a>
-    <a href="../table_of_contents.html#classes">Classes</a>
-    <a href="../table_of_contents.html#methods">Methods</a>
-  </div>
-</div>
-
-    <div id="search-section" role="search" class="project-section initially-hidden">
-  <form action="#" method="get" accept-charset="utf-8">
-    <div id="search-field-wrapper">
-      <input id="search-field" role="combobox" aria-label="Search"
-             aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
-             title="Type to search, Up and Down to navigate, Enter to load">
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
     </div>
 
-    <ul id="search-results" aria-label="Search Results"
-        aria-busy="false" aria-expanded="false"
-        aria-atomic="false" class="initially-hidden"></ul>
-  </form>
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../CongregaPlenum.html" title="CongregaPlenum (module)">CongregaPlenum</a></span></span>
+     &raquo; 
+    <span class="title">Client</span>
+  
 </div>
 
-  </div>
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: CongregaPlenum::Client
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">CongregaPlenum::Client</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
 
   
   
-  <div id="parent-class-section" class="nav-section">
-  <h3>Ancestors</h3>
-  <ul><li>Object</li></ul>
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd>Singleton</dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/client.rb</dd>
+  </dl>
+  
 </div>
 
-  
-<div id="includes-section" class="nav-section">
-  <h3>Included Modules</h3>
-
-  <ul class="link-list">
-    <li><span class="include">Singleton</span>
-  </ul>
-</div>
-
-  
-  
-  <div class="nav-section">
-    <h3>Class Methods</h3>
-    <ul class="link-list" role="directory">
-      <li ><a href="#method-c-new">new</a></li>
-    </ul>
-  </div>
-
-
-
-  <div class="nav-section">
-    <h3>Instance Methods</h3>
-    <ul class="link-list" role="directory">
-      <li ><a href="#method-i-get">get</a></li>
-      <li ><a href="#method-i-get_paginated">get_paginated</a></li>
-    </ul>
-  </div>
-
-
-
-  <footer id="validator-badges" role="contentinfo">
-  <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.14.0.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
-</footer>
-
-</nav>
-
-<main role="main" aria-labelledby="class-CongregaPlenum::Client">
-  
-  
-    <ol role="navigation" aria-label="breadcrumb" class="breadcrumb">
-      
-      <li>
-        
-        <a href="../CongregaPlenum.html">CongregaPlenum</a><span>::</span>
-        
-      </li>
-      
-      <li>
-        
-        <span>Client</span>
-        
-      </li>
-      
-    </ol>
-  
-
-  <h1 id="class-CongregaPlenum::Client" class="anchor-link class">
-    class CongregaPlenum::Client
-  </h1>
-
-  <section class="description">
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
     
 <p>HTTP client responsible for talking to the Câmara API endpoints and dealing with retries, pagination and response parsing.</p>
 
-<p>All methods are thread-safe because the heavy collaborators ({HttpAdapter}, {RetryPolicy} and {ResponseHandler}) are stateless.</p>
-
-  </section>
-
-  <section id="5Buntitled-5D" class="documentation-section anchor-link">
+<p>All methods are thread-safe because the heavy collaborators (<span class='object_link'><a href="HttpAdapter.html" title="CongregaPlenum::HttpAdapter (class)">HttpAdapter</a></span>, <span class='object_link'><a href="RetryPolicy.html" title="CongregaPlenum::RetryPolicy (class)">RetryPolicy</a></span> and <span class='object_link'><a href="ResponseHandler.html" title="CongregaPlenum::ResponseHandler (class)">ResponseHandler</a></span>) are stateless.</p>
 
 
+  </div>
+</div>
+<div class="tags">
+  
 
-    <section class="attribute-method-details" class="method-section">
-      <header>
-        <h3>Attributes</h3>
-      </header>
-
-      <div id="attribute-i-http_adapter" class="method-detail anchor-link">
-        <div class="method-heading attribute-method-heading">
-          <a href="#attribute-i-http_adapter" title="Link to this attribute">
-            <span class="method-name">http_adapter</span>
-            <span class="attribute-access-type">[R]</span>
-          </a>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
-      <div id="attribute-i-response_handler" class="method-detail anchor-link">
-        <div class="method-heading attribute-method-heading">
-          <a href="#attribute-i-response_handler" title="Link to this attribute">
-            <span class="method-name">response_handler</span>
-            <span class="attribute-access-type">[R]</span>
-          </a>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
-      <div id="attribute-i-retry_policy" class="method-detail anchor-link">
-        <div class="method-heading attribute-method-heading">
-          <a href="#attribute-i-retry_policy" title="Link to this attribute">
-            <span class="method-name">retry_policy</span>
-            <span class="attribute-access-type">[R]</span>
-          </a>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
-    </section>
+</div>
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section anchor-link">
-       <header>
-         <h3>Public Class Methods</h3>
-       </header>
 
-      <div id="method-c-new" class="method-detail anchor-link ">
-        <div class="method-header">
-            <div class="method-heading">
-              <a href="#method-c-new" title="Link to this method">
-                <span class="method-name">new</span>
-                <span class="method-args">()</span>
-              </a>
-            </div>
-        </div>
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#http_adapter-instance_method" title="#http_adapter (instance method)">#<strong>http_adapter</strong>  &#x21d2; Object </a>
+    
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
 
-        <div class="method-description">
-          <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/client.rb, line 14</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
-  <span class="ruby-identifier">configuration</span> = <span class="ruby-constant">CongregaPlenum</span>.<span class="ruby-identifier">configuration</span>
-  <span class="ruby-ivar">@http_adapter</span> = <span class="ruby-constant">HttpAdapter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">configuration:</span> <span class="ruby-identifier">configuration</span>)
-  <span class="ruby-ivar">@retry_policy</span> = <span class="ruby-constant">RetryPolicy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">configuration:</span> <span class="ruby-identifier">configuration</span>)
-  <span class="ruby-ivar">@response_handler</span> = <span class="ruby-constant">ResponseHandler</span>.<span class="ruby-identifier">new</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute http_adapter.</p>
+</div></span>
+  
+</li>
 
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#response_handler-instance_method" title="#response_handler (instance method)">#<strong>response_handler</strong>  &#x21d2; Object </a>
+    
 
-      </div>
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
 
-    </section>
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute response_handler.</p>
+</div></span>
+  
+</li>
 
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section anchor-link">
-       <header>
-         <h3>Public Instance Methods</h3>
-       </header>
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#retry_policy-instance_method" title="#retry_policy (instance method)">#<strong>retry_policy</strong>  &#x21d2; Object </a>
+    
 
-      <div id="method-i-get" class="method-detail anchor-link ">
-        <div class="method-header">
-            <div class="method-heading">
-              <a href="#method-i-get" title="Link to this method">
-                <span class="method-name">get</span>
-                <span class="method-args">(endpoint, params = {})</span>
-              </a>
-            </div>
-        </div>
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute retry_policy.</p>
+</div></span>
+  
+</li>
 
-        <div class="method-description">
-          <div class="method-source-code" id="get-source">
-            <pre><span class="ruby-comment"># File lib/client.rb, line 27</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get</span>(<span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">params</span> = {})
-  <span class="ruby-identifier">url</span> = <span class="ruby-identifier">build_url</span>(<span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">params</span>)
-
-  <span class="ruby-identifier">retry_policy</span>.<span class="ruby-identifier">with_retries</span>(<span class="ruby-identifier">url</span>) { <span class="ruby-identifier">execute_request</span>(<span class="ruby-identifier">url</span>) }
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          <p>Performs a single HTTP GET to the given <code>endpoint</code> and returns the parsed JSON body.</p>
-
-<p>@param endpoint [String] the relative path (e.g. <code>deputados</code>) @param params [Hash] query parameters merged into the request @return [Hash] parsed response body</p>
-        </div>
-
-
-      </div>
-
-      <div id="method-i-get_paginated" class="method-detail anchor-link ">
-        <div class="method-header">
-            <div class="method-heading">
-              <a href="#method-i-get_paginated" title="Link to this method">
-                <span class="method-name">get_paginated</span>
-                <span class="method-args">(endpoint, params = {})</span>
-              </a>
-            </div>
-        </div>
-
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
-
-        <div class="method-description">
-          <div class="method-source-code" id="get_paginated-source">
-            <pre><span class="ruby-comment"># File lib/client.rb, line 39</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_paginated</span>(<span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">params</span> = {})
-  <span class="ruby-identifier">results</span> = []
-  <span class="ruby-identifier">each_response_page</span>(<span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">params</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">page_data</span><span class="ruby-operator">|</span> <span class="ruby-identifier">results</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">page_data</span>) }
-
-  <span class="ruby-identifier">results</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          <p>Retrieves all pages for an endpoint, flattening the <code>dados</code> payloads into a single array. Automatically respects the configured rate limit delay.</p>
-
-<p>@param endpoint [String] @param params [Hash] @return [Array&lt;Hash&gt;]</p>
-        </div>
+    
+  </ul>
 
 
-      </div>
 
-    </section>
 
-  </section>
-</main>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
 
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get-instance_method" title="#get (instance method)">#<strong>get</strong>(endpoint, params = {})  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Performs a single HTTP GET to the given <code>endpoint</code> and returns the parsed JSON body.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_paginated-instance_method" title="#get_paginated (instance method)">#<strong>get_paginated</strong>(endpoint, params = {})  &#x21d2; Array&lt;Hash&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Retrieves all pages for an endpoint, flattening the <code>dados</code> payloads into a single array.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>  &#x21d2; Client </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Client.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="CongregaPlenum::Client (class)">Client</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Client.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/client.rb', line 14</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
+  <span class='id identifier rubyid_configuration'>configuration</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../CongregaPlenum.html" title="CongregaPlenum (module)">CongregaPlenum</a></span></span><span class='period'>.</span><span class='id identifier rubyid_configuration'><span class='object_link'><a href="../CongregaPlenum.html#configuration-class_method" title="CongregaPlenum.configuration (method)">configuration</a></span></span>
+  <span class='ivar'>@http_adapter</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="HttpAdapter.html" title="CongregaPlenum::HttpAdapter (class)">HttpAdapter</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="HttpAdapter.html#initialize-instance_method" title="CongregaPlenum::HttpAdapter#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='label'>configuration:</span> <span class='id identifier rubyid_configuration'>configuration</span><span class='rparen'>)</span>
+  <span class='ivar'>@retry_policy</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="RetryPolicy.html" title="CongregaPlenum::RetryPolicy (class)">RetryPolicy</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="RetryPolicy.html#initialize-instance_method" title="CongregaPlenum::RetryPolicy#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='label'>configuration:</span> <span class='id identifier rubyid_configuration'>configuration</span><span class='rparen'>)</span>
+  <span class='ivar'>@response_handler</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="ResponseHandler.html" title="CongregaPlenum::ResponseHandler (class)">ResponseHandler</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="http_adapter-instance_method">
+  
+    #<strong>http_adapter</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute http_adapter.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/client.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_http_adapter'>http_adapter</span>
+  <span class='ivar'>@http_adapter</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="response_handler-instance_method">
+  
+    #<strong>response_handler</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute response_handler.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/client.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_response_handler'>response_handler</span>
+  <span class='ivar'>@response_handler</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="retry_policy-instance_method">
+  
+    #<strong>retry_policy</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute retry_policy.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/client.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_retry_policy'>retry_policy</span>
+  <span class='ivar'>@retry_policy</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="get-instance_method">
+  
+    #<strong>get</strong>(endpoint, params = {})  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Performs a single HTTP GET to the given <code>endpoint</code> and returns the parsed JSON body.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>endpoint</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the relative path (e.g. <code>deputados</code>)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>params</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>query parameters merged into the request</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>parsed response body</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/client.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='id identifier rubyid_build_url'>build_url</span><span class='lparen'>(</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_retry_policy'>retry_policy</span><span class='period'>.</span><span class='id identifier rubyid_with_retries'>with_retries</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_execute_request'>execute_request</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_paginated-instance_method">
+  
+    #<strong>get_paginated</strong>(endpoint, params = {})  &#x21d2; <tt>Array&lt;Hash&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Retrieves all pages for an endpoint, flattening the <code>dados</code> payloads into a single array. Automatically respects the configured rate limit delay.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>endpoint</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>params</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Hash&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/client.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_paginated'>get_paginated</span><span class='lparen'>(</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_results'>results</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_each_response_page'>each_response_page</span><span class='lparen'>(</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_page_data'>page_data</span><span class='op'>|</span> <span class='id identifier rubyid_results'>results</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='id identifier rubyid_page_data'>page_data</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_results'>results</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Thu Nov 27 06:32:06 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.4.6).
+</div>
+
+    </div>
+  </body>
+</html>

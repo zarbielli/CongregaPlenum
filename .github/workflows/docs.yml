@@ -22,10 +22,10 @@ jobs:
           ruby-version: '3.4'
           bundler-cache: true
 
-      - name: Generate RDoc
+      - name: Generate YARD docs
         run: |
           rm -rf doc
-          bundle exec rake rdoc
+          bundle exec yard doc
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

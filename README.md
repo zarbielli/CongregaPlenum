@@ -59,13 +59,13 @@ Caso precise de um controle mais fino, use diretamente `CongregaPlenum::Client`.
 
 ## Documentação
 
-Para gerar a documentação em RDoc execute:
+Para gerar a documentação com YARD execute:
 
 ```bash
-bundle exec rake rdoc
+bundle exec yard doc
 ```
 
-Os arquivos HTML serão criados em `doc/`. Abra `doc/index.html` no navegador para consultar as classes, módulos e métodos disponíveis.
+Os arquivos HTML serão criados em `doc/`. Abra `doc/index.html` no navegador para consultar as classes, módulos e métodos disponíveis. Na `main`, a action `Docs` publica essa pasta no GitHub Pages (`https://zarbielli.github.io/CongregaPlenum/`).
 
 ## Development
 

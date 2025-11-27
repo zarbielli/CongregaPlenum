@@ -1,0 +1,5 @@
+--markup markdown
+--main README.md
+--readme README.md
+--exclude README.md
+lib/**/*.rb

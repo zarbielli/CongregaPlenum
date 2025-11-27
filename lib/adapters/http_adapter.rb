@@ -11,7 +11,7 @@ module CongregaPlenum
       @configuration = configuration
     end
 
-    # Executes a GET request and returns the raw {Net::HTTPResponse}. All network
+    # Executes a GET request and returns the raw {::Net::HTTPResponse}. All network
     # errors of interest are mapped to {CongregaPlenum::ConnectionError} so upper
     # layers can treat them uniformly.
     def get(url)

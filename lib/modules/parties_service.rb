@@ -4,11 +4,17 @@ module CongregaPlenum
   # Service responsible for interacting with party endpoints. It exposes class
   # methods that hide pagination, retries and detail lookups.
   class PartiesService
+    # Default page size for party listings.
     ITEMS_PER_PAGE = 100
+    # Interval used to emit progress logs while iterating.
     PROGRESS_INTERVAL = 20
+    # Tag prefix for structured logging.
     SERVICE_TAG = 'CongregaPlenum::PartiesService'
 
     class << self
+      # Shared client instance configured via {CongregaPlenum.configure}.
+      #
+      # @return [CongregaPlenum::Client]
       def client
         @client ||= CongregaPlenum::Client.instance
       end
@@ -22,7 +28,7 @@ module CongregaPlenum
         { 'dados' => [] }
       end
 
-      # Bulk variant of {#api_get} that shields pagination from runtime errors.
+      # Bulk variant of {.api_get} that shields pagination from runtime errors.
       def api_get_paginated(endpoint, params = {})
         client.get_paginated(endpoint, params)
       rescue StandardError => e

@@ -10,6 +10,8 @@ gem 'rake', '~> 13.0'
 gem 'rspec', '~> 3.0'
 gem 'rubocop', '~> 1.21'
 
+gem 'yard', '~> 0.9.37'
+
 group :test do
   gem 'simplecov', '~> 0.22', require: false
   gem 'vcr', '~> 6.2'
@@ -20,3 +22,5 @@ group :development do
   gem 'pry', '~> 0.15.2'
   gem 'steep', '~> 1.10'
 end
+
+gem "rdoc", "~> 6.16"

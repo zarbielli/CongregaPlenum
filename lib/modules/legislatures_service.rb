@@ -4,11 +4,17 @@ module CongregaPlenum
   # Service responsible for interacting with legislature endpoints including mesa
   # composition and deputies per legislature.
   class LegislaturesService
+    # Default pagination size for legislature listings.
     PAGE_SIZE = 50
+    # Pagination size for deputies per legislature.
     DEPUTIES_PAGE_SIZE = 100
+    # Tag prefix for structured logging.
     SERVICE_TAG = 'CongregaPlenum::LegislaturesService'
 
     class << self
+      # Shared client instance configured via {CongregaPlenum.configure}.
+      #
+      # @return [CongregaPlenum::Client]
       def client
         @client ||= CongregaPlenum::Client.instance
       end
@@ -22,7 +28,7 @@ module CongregaPlenum
         { 'dados' => [] }
       end
 
-      # Bulk variant of {#api_get} protecting pagination loops.
+      # Bulk variant of {.api_get} protecting pagination loops.
       def api_get_paginated(endpoint, params = {})
         client.get_paginated(endpoint, params)
       rescue StandardError => e
