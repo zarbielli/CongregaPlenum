@@ -7,8 +7,7 @@ module CongregaPlenum
       @configuration = configuration
     end
 
-    # Wraps a block with retry logic for network/API errors. Retrying aqui simplifica
-    # os call sites e garante a mesma estratégia de backoff para todos.
+    # Wraps a block with retry logic for network/API errors.
     #
     # @param url [String] identifier used for logging
     # @yieldreturn [Object] result of the successful request
@@ -35,7 +34,7 @@ module CongregaPlenum
       delay = calculate_backoff_delay(retry_count)
 
       logger.warn(
-        "CongregaPlenum: Tentativa #{retry_count}/#{max_retries} para #{url}: #{error.message}, aguardando #{delay}s"
+        "CongregaPlenum: Tentativa #{retry_count}/#{max_retries} para #{url}: #{error.message}, aguardando #{delay}s" # rubocop:disable Layout/LineLength
       )
       sleep(delay)
     end
