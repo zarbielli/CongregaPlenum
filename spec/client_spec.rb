@@ -27,7 +27,8 @@ RSpec.describe CongregaPlenum::Client do
 
       expect(retry_policy).to receive(:with_retries).with(expected_url).and_yield
       expect(http_adapter).to receive(:get).with(expected_url).and_return(http_response)
-      expect(response_handler).to receive(:handle).with(http_response, expected_url).and_return(parsed_response)
+      expect(response_handler).to receive(:handle).with(http_response,
+                                                        expected_url).and_return(parsed_response)
 
       expect(client.get('deputados', ativo: true)).to eq(parsed_response)
     end

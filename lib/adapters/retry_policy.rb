@@ -34,7 +34,7 @@ module CongregaPlenum
       delay = calculate_backoff_delay(retry_count)
 
       logger.warn(
-        "CongregaPlenum: Tentativa #{retry_count}/#{max_retries} para #{url}: #{error.message}, aguardando #{delay}s" # rubocop:disable Layout/LineLength
+        "CongregaPlenum: Tentativa #{retry_count}/#{max_retries} para #{url}: #{error.message}, aguardando #{delay}s"
       )
       sleep(delay)
     end

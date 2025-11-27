@@ -3,7 +3,6 @@
 require 'spec_helper'
 require 'stringio'
 
-# rubocop:disable Metrics/BlockLength
 RSpec.describe CongregaPlenum::HttpAdapter do
   subject(:adapter) { described_class.new(configuration: configuration) }
 
@@ -37,4 +36,3 @@ RSpec.describe CongregaPlenum::HttpAdapter do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

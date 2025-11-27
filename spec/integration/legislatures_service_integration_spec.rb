@@ -2,7 +2,6 @@
 
 require 'spec_helper'
 
-# rubocop:disable Metrics/BlockLength
 RSpec.describe CongregaPlenum::LegislaturesService do
   before do
     CongregaPlenum.configuration = CongregaPlenum::Configuration.new
@@ -33,4 +32,3 @@ RSpec.describe CongregaPlenum::LegislaturesService do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength
